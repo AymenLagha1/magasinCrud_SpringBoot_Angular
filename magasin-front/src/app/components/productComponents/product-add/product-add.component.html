@@ -1,0 +1,49 @@
+<div class="custom-container">
+  <div class="center">
+    <form [formGroup]="productForm"class="form-bordered">
+  <br>
+  <h1 class="center-text">Ajouter un produit</h1>
+
+      <mat-form-field appearance="fill">
+      <input formControlName="name" matInput placeholder="Intitulé">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <input formControlName="description" matInput placeholder="description">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Categorie</mat-label>
+        <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories"  [value]="category"> {{category.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input type="number" formControlName="quantity" matInput placeholder="Quantité">
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <input type="number" formControlName="price" matInput placeholder="Prix">
+      </mat-form-field>
+
+      <mat-form-field class="columns">
+        <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.item(0).name}}</mat-label>
+        <ng-template #newFile>
+            <mat-label>Choose file</mat-label>
+        </ng-template>
+        <input matInput disabled>
+        <button mat-icon-button matSuffix (click)="fileInput.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+        <input hidden (change)="selectFile($event)" #fileInput type="file" id="file" formControlName="image">
+    </mat-form-field>
+
+  <br>
+      <button [disabled]="!productForm.valid"  mat-raised-button (click)="saveProduct()"  color="primary" mat-button>Enregistrer</button>
+  </form>
+</div>
+
+
+</div>

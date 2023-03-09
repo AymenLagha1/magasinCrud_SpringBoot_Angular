@@ -1,0 +1,22 @@
+<div>
+    <button routerLink="/category/add" class="mb-3 btn btn-primary float-right">Ajouter</button>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Opérations</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories; let index = index">
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td>
+                    <button class="mr-3 btn btn-primary" routerLink="/category/edit/{{category.id}}"><fa-icon [icon]="faPen"></fa-icon></button>
+                    <button class="mr-3 btn btn-danger" (click)="delete(category.id,index)"><fa-icon [icon]="faTrash"></fa-icon></button>
+                </td>
+                </tr>        
+        </tbody>
+      </table>
+</div>

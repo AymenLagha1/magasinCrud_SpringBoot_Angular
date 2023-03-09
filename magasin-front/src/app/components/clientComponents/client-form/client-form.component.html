@@ -1,0 +1,23 @@
+<div class="custom-container">
+    <div class="center">
+    <form (ngSubmit)="onSubmit()" [formGroup]="clientForm" class="form-bordered">
+    <br>
+    <h1 class="center-text">CLient</h1>
+
+        <mat-form-field appearance="legacy">
+        <input formControlName="lastName" matInput placeholder="Nom">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="legacy">
+        <input formControlName="firstName" matInput placeholder="Prénom">
+        </mat-form-field>
+
+    <br>
+        <button type="submit" [disabled]="!clientForm.valid"  class="submit-btn" mat-raised-button  color="primary" mat-button>Enregistrer</button>
+    </form>
+</div>
+
+
+</div>
+

@@ -1,0 +1,55 @@
+<div fxLayout="row" fxLayoutAlign="end center">
+    <button color="primary" mat-button routerLink="/commande/create">
+      <mat-icon>add</mat-icon>
+      Ajouter une commande
+    </button>
+</div>
+  
+  
+  <table [dataSource]="dataSource" [trackBy]="trackById" class="mat-elevation-z8" mat-table>
+  
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  
+  
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell>ID</th>
+      <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="client">
+      <th *matHeaderCellDef mat-header-cell>Client</th>
+      <td *matCellDef="let element" mat-cell> {{element.client.firstName}} {{element.client.lastName}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef mat-header-cell> Date</th>
+      <td *matCellDef="let element" mat-cell> {{element.date | date : 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th *matHeaderCellDef mat-header-cell> Montant total</th>
+      <td *matCellDef="let element" mat-cell> {{element.amount}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+  
+      <th *matHeaderCellDef mat-header-cell>ACTIONS</th>
+      <td *matCellDef="let element" mat-cell>
+        <!-- <button color="primary" mat-button routerLink="/client/edit/{{element.id}}">
+          <mat-icon >edit</mat-icon>
+        </button> -->
+
+        <button color="warn" (click)="delete(element.id)" mat-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+  
+    </ng-container>
+  
+  
+  </table>
+  
+  
+  

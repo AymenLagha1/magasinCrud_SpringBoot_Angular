@@ -1,0 +1,50 @@
+<div fxLayout="row" fxLayoutAlign="end center">
+    <button color="primary" mat-button routerLink="/client/add">
+      <mat-icon>add</mat-icon>
+      Ajouter un client
+    </button>
+</div>
+  
+  
+  <table [dataSource]="dataSource" [trackBy]="trackById" class="mat-elevation-z8" mat-table>
+  
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  
+  
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell>ID</th>
+      <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th *matHeaderCellDef mat-header-cell>Nom</th>
+      <td *matCellDef="let element" mat-cell> {{element.lastName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstName">
+      <th *matHeaderCellDef mat-header-cell> Prénom</th>
+      <td *matCellDef="let element" mat-cell> {{element.firstName}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="cc">
+  
+      <th *matHeaderCellDef mat-header-cell>ACTIONS</th>
+      <td *matCellDef="let element" mat-cell>
+        <button color="primary" mat-button routerLink="/client/edit/{{element.id}}">
+          <mat-icon >edit</mat-icon>
+        </button>
+
+        <button color="warn" (click)="delete(element.id)" mat-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+  
+    </ng-container>
+  
+  
+  </table>
+  
+  
+  
